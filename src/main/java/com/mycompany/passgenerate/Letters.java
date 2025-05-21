@@ -6,14 +6,14 @@ import javax.xml.stream.events.Characters;
 
 public class Letters implements PssSet {
 
-    public Letters(List<Character> list) {
+    public Letters(List<String> list) {
       sym = list;
     }
-    List<Character> sym = new ArrayList<>();
+    List<String> sym = new ArrayList<>();
     boolean numbLetters = false;
 
     @Override
-    public List<Character> listArr() {
+    public List<String> listArr() {
                 
         
         for (int i = 0; i < 127; i++) {
@@ -25,7 +25,8 @@ public class Letters implements PssSet {
                 numbLetters = false;
             }
             if (numbLetters) {
-                sym.add(a);
+            	String b = "" + a;
+                sym.add(b);
             }
 
         }

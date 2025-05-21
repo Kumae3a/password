@@ -10,30 +10,32 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 
 public class PassGenerate {
 
-	private static int position;
-	private static int line;
-	static List<Character> arr = new ArrayList<>();
+	static List<String> arr = new ArrayList<>();
+	static String[] arrString;
 
 	public static void main(String[] args) {
 
-//        PssSet lettersNumbers = new LettersNumbers(arr);
-//        PssSet number = new Numbers(arr);
-//        PssSet letters = new Letters(arr);
-//        PssSet lettNumbSymb = new LettNumbSymb(arr);
 		JFrame jFrame = getJFrame();
+		JLabel label = new JLabel();
+	
+		
 
 	}
 
-	public static void printAll() {
-		for (int j = 0; j < line; j++) {
+	public static void printAll(int line) {
+		arrString = new String[line];
+		for (int i = 0; i < line; i++) {
 
-			System.out.print(arr.get((int) (Math.random() * arr.size())));
+			arrString[i] = arr.get((int) (Math.random() * arr.size()));
 
 		}
 	}
@@ -44,7 +46,8 @@ public class PassGenerate {
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jFrame.setSize(500, 150);
 		// jFrame.setResizable(false);
-		jFrame.setVisible(true);
+		jFrame.show();
+		//jFrame.setVisible(true);
 //         jFrame.setMinimumSize(new Dimension(500, 350));
 //         jFrame.setMaximumSize(new Dimension(600, 400));
 		jFrame.setTitle("pawsord generator");
@@ -54,11 +57,12 @@ public class PassGenerate {
 		JPanel jPanelBut = new JPanel();
 		JPanel jPanelText = new JPanel();
 		JLabel numb = new JLabel("Введите длинну пароля");
+
 		jFrame.getContentPane().add(BorderLayout.SOUTH, jPanelBut);
 		jFrame.getContentPane().add(BorderLayout.CENTER, jPanelmove);
 		jFrame.getContentPane().add(BorderLayout.NORTH, jPanelText);
 
-		JTextField length = new JTextField(3);
+		JTextField length = new JTextField(4);
 		JRadioButton letterButton = new JRadioButton("буквы");
 		JRadioButton numbButton = new JRadioButton("цифры");
 		JRadioButton letNumButton = new JRadioButton("буквы и цифры");
@@ -97,13 +101,12 @@ public class PassGenerate {
 					PssSet lettNumbSymb = new LettNumbSymb(arr);
 					lettNumbSymb.listArr();
 				}
-				int numbLength;
-				numbLength = Integer.parseInt(numb.getText());
-				for (int j = 0; j < numbLength; j++) {
 
-					JLabel label = new JLabel((arr.get((int) (Math.random() * arr.size()))).toString());
-
-				}
+				int numbLength = Integer.parseInt(numb.getText());
+				printAll(numbLength);
+				JLabel show = new JLabel(arrString.toString());
+				
+				
 			}
 
 		});

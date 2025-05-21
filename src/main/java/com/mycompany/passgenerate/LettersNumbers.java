@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LettersNumbers implements PssSet {
- List<Character> sym = new ArrayList<>();
+ List<String> sym = new ArrayList<>();
     boolean numbLetters = false;
     
-    public LettersNumbers(List<Character> list) {
+    public LettersNumbers(List<String> list) {
         sym = list;
     }
 
     @Override
-    public List<Character> listArr() {
+    public List<String> listArr() {
        
         for (int i = 0; i < 127; i++) {
             char a = (char) i;
@@ -23,7 +23,8 @@ public class LettersNumbers implements PssSet {
                 numbLetters = false;
             }
             if (numbLetters) {
-                sym.add(a);
+            	String b = "" + a;
+                sym.add(b);
             }
 
         }
